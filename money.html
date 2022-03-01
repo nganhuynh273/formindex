@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng chuyển đổi tiền tệ</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>Amount</td>
+            <td>From Currency</td>
+            <td>To Currency</td>
+        </tr>
+        <tr>
+            <td>
+                <input id="amount" type="number" />
+            </td>
+            <td>
+                <select id="select1">
+                    <option value="VND"> VietNam</option>
+                    <option value="USD"> USD</option>
+                </select>
+            </td>
+            <td>
+                <select id="select2">
+                    <option value="USD"> USD</option>
+                    <option value="VND"> VietNam</option>
+                </select>
+            </td>
+            <td>
+                <input name="Convert" onclick="convert()" value="Convert" type="button" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p id="pResult">
+                    Result:
+                </p>
+
+            </td>
+        </tr>
+    </table>
+</body>
+<script>
+    function convert(ra) {
+
+        let mAmount = Number(document.getElementById('amount').value);
+        let select1 = document.getElementById('select1').value;
+        let select2 = document.getElementById('select2').value;
+        let result;
+        if (select1 == select2)
+            result = mAmount;
+        if (select1 == "VND" && select2 == "USD")
+            result = mAmount / 23000;
+        if (select1 == "USD" && select2 == "VND")
+            result = mAmount * 23000;
+
+        // let select1 =document.getElementById('sualai').value
+        // let select2=select1 =document.getElementById('sualai').value
+        // let result;
+        //Neu select1 == select2
+        //    result = mAmount
+
+        // Neu select1 =="VND" && select2 == "USD"
+        //result=mAmount/23000;
+        // Neu select1 =="USD" && select2 == "VND"
+        //result=mAmount*23000;
+
+
+        document.getElementById("pResult").innerHTML = "Result:" + result;
+
+    }
+</script>
+
+</html>
